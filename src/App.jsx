@@ -71,7 +71,6 @@ function App() {
     if (filter === 'alluvial') return soilsData.filter(s => s.name.includes('Alluvial'))
     if (filter === 'black') return soilsData.filter(s => s.name.includes('Black'))
     if (filter === 'red') return soilsData.filter(s => s.name.includes('Red') || s.name.includes('Yellow'))
-    if (filter === 'special') return soilsData.filter(s => s.name.includes('Laterite') || s.name.includes('Arid') || s.name.includes('Saline') || s.name.includes('Peaty') || s.name.includes('Forest'))
     return soilsData
   }
 
@@ -251,12 +250,6 @@ function App() {
             >
               Red/Yellow
             </button>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => { setFilter('special'); setCurrentIndex(0); }}
-            >
-              Special Soils
-            </button>
           </div>
         </div>
 
@@ -288,11 +281,11 @@ function App() {
             </div>
             <div className="flashcard-back">
               <div style={{textAlign: 'left', width: '100%'}}>
-                {soil.coverage && <div className="soil-info"><strong>Coverage:</strong> {soil.coverage}</div>}
-                {soil.richIn && <div className="soil-info"><strong>Rich in:</strong> {soil.richIn.join(', ')}</div>}
-                {soil.poorIn && <div className="soil-info"><strong>Poor in:</strong> {soil.poorIn.join(', ')}</div>}
-                {soil.suitableCrops && <div className="soil-info"><strong>Crops:</strong> {soil.suitableCrops.slice(0, 3).join(', ')}</div>}
-                {soil.nickname && <div className="soil-info"><strong>Also called:</strong> {soil.nickname}</div>}
+                <div className="soil-info"><strong>Category:</strong> {soil.category}</div>
+                {soil.rainfall && <div className="soil-info"><strong>Rainfall:</strong> {soil.rainfall}</div>}
+                {soil.temperature && <div className="soil-info"><strong>Temperature:</strong> {soil.temperature}</div>}
+                {soil.altitude && <div className="soil-info"><strong>Altitude:</strong> {soil.altitude}</div>}
+                {soil.percentageArea && <div className="soil-info"><strong>% of Total Area:</strong> {soil.percentageArea}</div>}
                 <div className="soil-info" style={{marginTop: '10px', fontSize: '0.85rem', fontStyle: 'italic'}}>
                   <strong>Importance:</strong> {soil.importance}
                 </div>
@@ -337,317 +330,65 @@ function App() {
   const renderBrowse = () => {
     const soils = getFilteredSoils()
 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
     return (
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
       <div>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
         <div className="filter-section">
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
           <h3>Filter by Category</h3>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
           <div className="filter-buttons">
             <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
-            <button 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               onClick={() => setFilter('all')}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
             >
-              Special Soils
-            </button>
-            >
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               All ({soilsData.length})
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
             </button>
             <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
-            <button 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               className={`filter-btn ${filter === 'high' ? 'active' : ''}`}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               onClick={() => setFilter('high')}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
             >
-              Special Soils
-            </button>
-            >
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               High Priority
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
             </button>
             <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
-            <button 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               className={`filter-btn ${filter === 'alluvial' ? 'active' : ''}`}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               onClick={() => setFilter('alluvial')}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
             >
-              Special Soils
-            </button>
-            >
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               Alluvial
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
             </button>
             <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
-            <button 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               className={`filter-btn ${filter === 'black' ? 'active' : ''}`}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               onClick={() => setFilter('black')}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
             >
-              Special Soils
-            </button>
-            >
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               Black/Regur
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
             </button>
             <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
-            <button 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               className={`filter-btn ${filter === 'red' ? 'active' : ''}`}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               onClick={() => setFilter('red')}
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
             >
-              Special Soils
-            </button>
-            >
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
               Red/Yellow
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
-            </button>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
             </button>
           </div>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
         </div>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
 
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
         <h2 style={{marginBottom: '20px', color: '#1a3a0f'}}>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
           {soils.length} Soil(s) Found
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
         </h2>
-            <button 
-              className={`filter-btn ${filter === 'special' ? 'active' : ''}`}
-              onClick={() => setFilter('special')}
-            >
-              Special Soils
-            </button>
 
         <div className="soils-grid">
           {soils.map(soil => (
             <div key={soil.id} className="soil-card">
               <h3>{soil.name}</h3>
               <div className="tags">
+                <span className="tag">{soil.category}</span>
                 <span className={`tag ${soil.importance === 'HIGH' ? 'high' : ''}`}>
                   {soil.importance}
                 </span>
-                {soil.coverage && <span className="tag">{soil.coverage}</span>}
-                {soil.nickname && <span className="tag">{soil.nickname}</span>}
+                {soil.percentageArea && <span className="tag">{soil.percentageArea}</span>}
               </div>
-              {soil.richIn && <div className="soil-info"><strong>Rich in:</strong> {soil.richIn.slice(0, 3).join(', ')}</div>}
-              {soil.poorIn && <div className="soil-info"><strong>Poor in:</strong> {soil.poorIn.slice(0, 2).join(', ')}</div>}
-              {soil.suitableCrops && <div className="soil-info"><strong>Suitable Crops:</strong> {soil.suitableCrops.slice(0, 3).join(', ')}</div>}
-              <div className="soil-info"><strong>Key Features:</strong></div>
+              {soil.rainfall && <div className="soil-info"><strong>Rainfall:</strong> {soil.rainfall}</div>}
+              {soil.temperature && <div className="soil-info"><strong>Temperature:</strong> {soil.temperature}</div>}
+              {soil.altitude && <div className="soil-info"><strong>Altitude:</strong> {soil.altitude}</div>}
+              <div className="soil-info"><strong>Characteristics:</strong></div>
               <ul style={{margin: '5px 0', paddingLeft: '20px', fontSize: '0.85rem'}}>
-                {soil.characteristics?.slice(0, 2).map((char, i) => <li key={i}>{char.substring(0, 90)}...</li>)}
+                {soil.characteristics?.slice(0, 2).map((char, i) => <li key={i}>{char.substring(0, 100)}...</li>)}
               </ul>
             </div>
           ))}
@@ -991,8 +732,8 @@ function App() {
     <div className="app">
       <div className="container">
         <div className="header">
-          <h1>🏜️ Soils of India - UPSC Prep</h1>
-          <p>Master 8 soil types, characteristics & agricultural suitability</p>
+          <h1>🌳 Soils of India - UPSC Prep</h1>
+          <p>Master soil types, vegetation zones & ecological diversity</p>
         </div>
 
         {!mode && renderModeSelector()}
